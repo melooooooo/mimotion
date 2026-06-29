@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>步数提交</title>
+    <link rel="stylesheet" href="/app/styles.css" />
+  </head>
+  <body>
+    <main id="app">
+      <section id="wechatGate" class="screen gate hidden">
+        <div class="brand">MiMotion</div>
+        <h1>请在微信内打开</h1>
+        <p>当前页面只面向微信内置浏览器使用。请复制链接到微信聊天或文件传输助手中打开。</p>
+        <button id="copyLinkBtn" class="secondary">复制当前链接</button>
+      </section>
+
+      <section id="authState" class="screen hidden">
+        <div class="loader"></div>
+        <p>正在建立安全会话</p>
+      </section>
+
+      <section id="bindView" class="screen hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Zepp Life</p>
+            <h1>绑定账号</h1>
+          </div>
+        </header>
+        <form id="bindForm" class="panel">
+          <label>
+            <span>手机号或邮箱</span>
+            <input id="accountInput" autocomplete="username" placeholder="Zepp Life 登录账号" />
+          </label>
+          <label>
+            <span>密码</span>
+            <div class="passwordRow">
+              <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Zepp Life 密码" />
+              <button id="togglePassword" type="button" class="iconButton">显示</button>
+            </div>
+          </label>
+          <p class="hint">这里填写的是 Zepp Life 账号密码，不是微信密码，也不是小米账号密码。</p>
+          <button id="bindButton" class="primary" type="submit">绑定 Zepp Life</button>
+        </form>
+      </section>
+
+      <section id="mainView" class="screen hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">今日步数</p>
+            <h1>提交步数</h1>
+          </div>
+          <button id="settingsBtn" class="textButton">设置</button>
+        </header>
+
+        <section class="accountStrip">
+          <span>已绑定</span>
+          <strong id="maskedAccount">-</strong>
+        </section>
+
+        <section class="stepPanel">
+          <input id="stepsInput" class="stepsInput" type="number" inputmode="numeric" min="1" max="98800" value="18000" />
+          <input id="stepsRange" class="stepsRange" type="range" min="1" max="30000" value="18000" />
+          <div class="quickGrid">
+            <button type="button" data-step="8000">8000</button>
+            <button type="button" data-step="12000">12000</button>
+            <button type="button" data-step="18000">18000</button>
+            <button type="button" data-step="25000">25000</button>
+          </div>
+        </section>
+
+        <section id="resultCard" class="resultCard hidden"></section>
+
+        <nav class="tabbar">
+          <button id="historyBtn" class="secondary">查看记录</button>
+          <button id="submitBtn" class="primary">提交步数</button>
+        </nav>
+      </section>
+
+      <section id="historyView" class="screen hidden">
+        <header class="topbar">
+          <button class="backBtn" data-back="main">返回</button>
+          <h1>提交记录</h1>
+        </header>
+        <div id="historyList" class="historyList"></div>
+      </section>
+
+      <section id="settingsView" class="screen hidden">
+        <header class="topbar">
+          <button class="backBtn" data-back="main">返回</button>
+          <h1>设置</h1>
+        </header>
+        <section class="panel">
+          <p class="settingLine">当前绑定：<strong id="settingsAccount">-</strong></p>
+          <p class="hint">服务端只保存加密后的 Zepp 登录 token，不保存 Zepp 明文密码。登录状态失效后需要重新绑定。</p>
+          <button id="rebindBtn" class="secondary">重新绑定</button>
+          <button id="unbindBtn" class="danger">解绑账号</button>
+        </section>
+      </section>
+
+      <div id="toast" class="toast hidden"></div>
+    </main>
+    <script src="/app/app.js"></script>
+  </body>
+</html>

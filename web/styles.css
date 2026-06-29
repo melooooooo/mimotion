@@ -1,0 +1,246 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7fb;
+  --text: #172033;
+  --muted: #6c7485;
+  --line: #dde3ed;
+  --primary: #0f8f68;
+  --primary-dark: #087052;
+  --danger: #c93d3d;
+  --panel: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 24px 18px 96px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.gate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.brand,
+.eyebrow {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+
+.panel,
+.stepPanel,
+.accountStrip,
+.resultCard {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.passwordRow {
+  display: grid;
+  grid-template-columns: 1fr 64px;
+  gap: 8px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  min-height: 46px;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.primary:disabled {
+  background: #9ebcaf;
+}
+
+.secondary,
+.iconButton,
+.textButton,
+.backBtn {
+  background: #e7f2ee;
+  color: var(--primary-dark);
+}
+
+.danger {
+  width: 100%;
+  margin-top: 12px;
+  background: #fdecec;
+  color: var(--danger);
+}
+
+.hint {
+  margin: 0 0 18px;
+  font-size: 14px;
+}
+
+.accountStrip {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.stepPanel {
+  display: grid;
+  gap: 18px;
+}
+
+.stepsInput {
+  border: 0;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 56px;
+  font-weight: 800;
+}
+
+.stepsRange {
+  accent-color: var(--primary);
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.quickGrid button {
+  padding: 0 4px;
+  background: #eef2f7;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.resultCard {
+  margin-top: 14px;
+}
+
+.tabbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 10px;
+  padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(246, 247, 251, 0.94);
+  border-top: 1px solid var(--line);
+}
+
+.historyList {
+  display: grid;
+  gap: 10px;
+}
+
+.historyItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.statusOk {
+  color: var(--primary);
+}
+
+.statusFail {
+  color: var(--danger);
+}
+
+.settingLine {
+  color: var(--text);
+}
+
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 88px;
+  left: 18px;
+  border-radius: 8px;
+  padding: 13px 16px;
+  background: rgba(23, 32, 51, 0.92);
+  color: white;
+  text-align: center;
+}
+
+.loader {
+  width: 38px;
+  height: 38px;
+  margin: 40vh auto 14px;
+  border: 4px solid #dbe6e1;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
