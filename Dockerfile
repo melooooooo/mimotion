@@ -15,6 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 COPY util ./util
 COPY web ./web
+# 微信公众号网页授权域名验证文件，必须能从根路径访问
+COPY MP_verify_*.txt ./
 
 EXPOSE 8000
 

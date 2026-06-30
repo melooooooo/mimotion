@@ -5,10 +5,12 @@ from datetime import timedelta
 from contextlib import asynccontextmanager
 from urllib.parse import urlencode
 
+from pathlib import Path
+
 import httpx
 from fastapi import Depends, FastAPI, HTTPException, Query, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from sqlalchemy import select
@@ -210,6 +212,14 @@ async def dev_login(
     ticket = create_h5_ticket(db, user, settings)
     db.commit()
     return RedirectResponse(url=f"/app?{urlencode({'ticket': ticket, 'dev': '1'})}")
+
+
+@app.get("/MP_verify_{filename}.txt")
+def wechat_domain_verify(filename: str):
+    path = Path(__file__).resolve().parent.parent / f"MP_verify_{filename}.txt"
+    if not path.is_file():
+        raise HTTPException(status_code=404, detail="验证文件不存在")
+    return PlainTextResponse(content=path.read_text(encoding="utf-8"), media_type="text/plain")
 
 
 @app.get("/")
